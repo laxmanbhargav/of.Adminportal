@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { parseCookies } from "nookies";
 import { useForm } from 'react-hook-form';
 
@@ -8,6 +8,8 @@ import { useAppContext } from '../../contexts/appcontext';
 import { createProductAction } from "../../actions/productactions";
 
 import { useToasts } from "react-toast-notifications";
+
+import { listProductCategoryAction } from '../../actions/productactions';
 
 
 const ProductCategory = () => {
@@ -22,11 +24,19 @@ const ProductCategory = () => {
 
     const { addToast } = useToasts();
 
+    useEffect(() => {
+        const fetchProductCategoryData = async () => {
+            await listProductCategoryAction(token, dispatch);
+        }
+        fetchProductCategoryData();
+    }, [])
+
+
 
     const onAddProductCategory = async (data) => {
         const body = {
             name: data.productName,
-            productCategoryId: "227A659C-C555-EC11-A355-AC12030DA196",
+            productCategoryId: data.productCategory,
             description: data.productDescription,
         }
         try {
@@ -42,10 +52,7 @@ const ProductCategory = () => {
                 <div className="breadcrumb-area">
                     <h1>Product</h1>
                 </div>
-
                 <form >
-
-
                     <div className="row">
                         <div className="col-lg-6 col-md-6">
                             <div className="form-group">
@@ -60,31 +67,29 @@ const ProductCategory = () => {
                                 />
                                 {errors["productName"] && <span className="errorMessage">Please enter the product name</span>}
                             </div>
-
-
-
                         </div>
 
                         <div className="col-lg-6 col-md-6">
-                                <div className="form-group">
-                                    <label>
-                                        <i className='bx bx-message-dots'></i>{" "}
-                                        Product Category:
-                                    </label>
-                                    <select {...register('productCategory', { required: true })}
-                                        className="dashbaord-category-select"
+                            <div className="form-group">
+                                <label>
+                                    <i className='bx bx-message-dots'></i>{" "}
+                                    Product Category:
+                                </label>
+                                <select {...register('productCategory', { required: true })}
+                                    className="dashbaord-category-select"
 
-                                    >
-                                        <option disabled>Select Product Category</option>
+                                >
+                                    <option disabled>Select Product Category</option>
 
-                                        <option>Tomato</option>
-                                        <option>Potato</option>
-                                        
+                                    {state.productcategory.data && state.productcategory.data?.map((productcategory) => (
+                                    <option value={productcategory.id}>{productcategory.name}</option>
+                                ))}
 
-                                    </select>
-                                    {errors["productCategory"] && <span className="errorMessage">Please select product category </span>}
-                                </div>
+
+                                </select>
+                                {errors["productCategory"] && <span className="errorMessage">Please select product category </span>}
                             </div>
+                        </div>
                     </div>
                     <div className="row">
                         <div className="col-lg-12 col-md-12">
@@ -110,6 +115,7 @@ const ProductCategory = () => {
                     </div>
                     <div className="flex-grow-1"></div>
                 </form>
+
             </div>
         </>
     );

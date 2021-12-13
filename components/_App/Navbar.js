@@ -195,14 +195,26 @@ const Navbar = () => {
 									</li>
 
 									<li className="nav-item">
-										<Link
-											href="/notifications"
-											activeClassName="active"
+										<a
+											href="#"
+											className=" nav-link user-drop"
 										>
-											<a className="nav-link">
-												Notifications
-											</a>
-										</Link>
+											Crop
+										</a>
+										<ul className="dropdown-menu">
+											<li className="nav-item">
+												<Link
+													href="/crop/addcrop"
+													activeClassName="active"
+												>
+													<a className="nav-link">
+														Add Crop
+													</a>
+												</Link>
+											</li>
+											
+
+										</ul>
 									</li>
 
 									<li className="nav-item">

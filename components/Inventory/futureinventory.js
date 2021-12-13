@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { parseCookies } from "nookies";
 import { useForm } from 'react-hook-form';
 
@@ -8,6 +8,8 @@ import { useAppContext } from '../../contexts/appcontext';
 import { createFutureInventoryAction } from "../../actions/inventoryactions";
 
 import { useToasts } from "react-toast-notifications";
+
+import { listProductAction } from '../../actions/productactions';
 
 
 const FutureInventory = () => {
@@ -21,6 +23,13 @@ const FutureInventory = () => {
     const { token } = parseCookies();
 
     const { addToast } = useToasts();
+
+    useEffect(() => {
+        const fetchProductData = async () => {
+            await listProductAction(token, dispatch);
+        }
+        fetchProductData();
+    }, [])
 
 
     const onAddFutureInventory = async (data) => {
@@ -80,8 +89,9 @@ const FutureInventory = () => {
                                 >
                                     <option disabled>Select Product</option>
 
-                                    <option>Tomato</option>
-                                    <option>Roma Tomato</option>
+                                    {state.product.data && state.product.data?.map((product) => (
+                                    <option value={product.id}>{product.name}</option>
+                                ))}
 
 
                                 </select>

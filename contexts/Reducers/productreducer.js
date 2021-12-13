@@ -21,7 +21,24 @@ const ProductReducer = (state, action) => {
                 loading: false,
                 error: payload.error,
             };
-    
+        case CONSTANTS.LIST_PRODUCT_LOADING:
+            return {
+                ...state,
+                loading: true,
+            };
+        case CONSTANTS.LIST_PRODUCT_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                data: payload.data,
+            };
+        case CONSTANTS.LIST_PRODUCT_FAILED:
+            return {
+                ...state,
+                loading: false,
+                error: payload.error,
+            };
+
 
         default: return {
             ...state

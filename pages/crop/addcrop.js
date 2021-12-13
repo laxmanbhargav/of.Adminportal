@@ -1,14 +1,10 @@
 import Navbar from "../../components/_App/Navbar";
 import Footer from "../../components/_App/Footer";
-import FutureInventory from '../../components/Inventory/futureinventory';
+import Crop from '../../components/Crop/crop';
 import AuthorizedContent from '../../components/Shared/authorizedcontent';
 import { Tab, Nav, Row, Col, Card } from 'react-bootstrap';
 
-
-
-
-
-const AddFutureInventory= () => {
+const AddCrop= () => {
     return (
         <AuthorizedContent>
 
@@ -29,7 +25,7 @@ const AddFutureInventory= () => {
                                 <Card.Body>
                                     <Tab.Content>
                                         <Tab.Pane eventKey="first">
-                                            <FutureInventory />
+                                            <Crop />
                                         </Tab.Pane>
                                         
                                     </Tab.Content>
@@ -59,4 +55,4 @@ const AddFutureInventory= () => {
     );
 };
 
-export default AddFutureInventory;
+export default AddCrop;
