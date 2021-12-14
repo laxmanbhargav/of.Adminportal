@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { useToasts } from "react-toast-notifications";
 import { useAuthContext } from "../../contexts/authcontext";
 import { Logout } from "../../services/authservice";
-
+import Image from 'next/image'
 import { useRouter } from "next/router";
 import Link from "../../utils/ActiveLink";
 
@@ -73,9 +73,11 @@ const Navbar = () => {
 							<div className="logo">
 								<Link href="/">
 									<a>
-										<img
-											src="/images/oeloginlogo.png"
+										<Image
+											src="/images/taazalogo.png"
 											alt="logo"
+											width={300}
+											height={100}
 										/>
 									</a>
 								</Link>
@@ -89,9 +91,11 @@ const Navbar = () => {
 						<nav className="navbar navbar-expand-md navbar-light">
 							<Link href="/">
 								<a className="navbar-brand">
-									<img
-										src="/images/oeloginlogo.png"
+									<Image
+										src="/images/taazalogo.png"
 										alt="logo"
+										width={300}
+										height={100}
 									/>
 								</a>
 							</Link>
@@ -102,6 +106,13 @@ const Navbar = () => {
 										<Link href="/" activeClassName="active">
 											<a className="dropdown-toggle nav-link">
 												Home
+											</a>
+										</Link>
+									</li>
+									<li className="nav-item">
+										<Link href="/" activeClassName="active">
+											<a className="dropdown-toggle nav-link">
+												Agent
 											</a>
 										</Link>
 									</li>
@@ -123,7 +134,7 @@ const Navbar = () => {
 													</a>
 												</Link>
 											</li>
-											
+
 
 										</ul>
 									</li>
@@ -192,28 +203,6 @@ const Navbar = () => {
 											</li>
 
 										</ul>
-									</li>
-
-									<li className="nav-item">
-										<Link
-											href="/notifications"
-											activeClassName="active"
-										>
-											<a className="nav-link">
-												Notifications
-											</a>
-										</Link>
-									</li>
-
-									<li className="nav-item">
-										<Link
-											href="/upload/listuploads"
-											activeClassName="active"
-										>
-											<a className="nav-link">
-												User Uploads
-											</a>
-										</Link>
 									</li>
 
 								</ul>

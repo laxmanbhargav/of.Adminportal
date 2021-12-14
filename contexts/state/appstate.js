@@ -13,6 +13,13 @@ export const initialProductCategoryState = {
     searchData: null,
 }
 
+export const initialAgentState = {
+    loading: false,
+    error: null,
+    data: null,
+    agentdata: null
+}
+
 export const initialProductState = {
     loading: false,
     error: null,

@@ -1,19 +1,19 @@
 import { useEffect, useReducer, createContext, useContext } from 'react';
 import combineReducers from 'react-combine-reducers';
-import { parseCookies } from "nookies";
+import AgentReducer from './Reducers/agentreducer';
 import LandReducer from './Reducers/landreducer';
 import ProductCategoryReducer from './Reducers/productcategoryreducer';
 import ProductReducer from './Reducers/productreducer';
 import FutureInventoryReducer from './Reducers/futureinventoryreducer';
 import AvailableInventoryReducer from './Reducers/availableinventoryreducer';
-import { initialLandState, initialProductCategoryState, initialProductState, initialFutureInventoryState, initialAvailableInventoryState } from './state/appstate';
+import { initialLandState, initialProductCategoryState, initialProductState, initialFutureInventoryState, initialAvailableInventoryState, initialAgentState } from './state/appstate';
 
 const AppContext = createContext();
 
 const AppContextProvider = ({ children }) => {
-    const { token } = parseCookies();
 
     const [appReducer, initialAppState] = combineReducers({
+        agents: [AgentReducer, initialAgentState],
         land: [LandReducer, initialLandState],
         productCategory: [ProductCategoryReducer, initialProductCategoryState],
         product: [ProductReducer, initialProductState],
@@ -21,13 +21,6 @@ const AppContextProvider = ({ children }) => {
         availableinventory: [AvailableInventoryReducer, initialAvailableInventoryState]
     });
     const [state, dispatch] = useReducer(appReducer, initialAppState);
-
-   /* useEffect(() => {
-        const loadData = async () => {
-            await getLanguagesAction(token, dispatch)
-        }
-        loadData();
-    }, [])*/
 
     useEffect(() => {
         console.log(state);
