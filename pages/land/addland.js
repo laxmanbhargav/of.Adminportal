@@ -10,10 +10,7 @@ const AddLand= () => {
 
             <Navbar />
             <div className="main-content d-flex flex-column">
-                <div className="breadcrumb-area">
-                    <h1>Howdy, Admin!</h1>
-                </div>
-
+               
                 <Tab.Container id="left-tabs-example" defaultActiveKey="first">
                     <Row>
                     <Col sm={3}>

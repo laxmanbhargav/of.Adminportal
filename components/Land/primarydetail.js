@@ -9,36 +9,7 @@ import { createLandAction } from "../../actions/landactions";
 
 import { useToasts } from "react-toast-notifications";
 
-const options = [
-    {
-        label: 'Action',
-        value: 'Action'
-    },
-    {
-        label: 'Adventure',
-        value: 'Adventure'
-    },
-    {
-        label: 'Crime',
-        value: 'Crime'
-    },
-    {
-        label: 'Thriller',
-        value: 'Thriller'
-    },
-    {
-        label: 'Drama',
-        value: 'Drama'
-    },
-    {
-        label: 'Romance',
-        value: 'Romance'
-    },
-    {
-        label: 'Scfi',
-        value: 'Scfi'
-    }
-]
+
 const PrimaryDetails = () => {
 
     const [genreSelection, setGenreSelection] = useState([]);
@@ -69,11 +40,11 @@ const PrimaryDetails = () => {
         }
 
         try {
-            console.log("In try");
+          
             console.log(body);
             await createLandAction(body, token, dispatch);
         } catch {
-           console.log("In Catch");
+          
         }
     }
 
