@@ -2,7 +2,7 @@ export const initialLandState = {
     loading: false,
     error: null,
     data: null,
-    searchData: null,
+    addData: null,
 }
 
 

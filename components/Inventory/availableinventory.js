@@ -24,161 +24,57 @@ const AvailableInventory = () => {
 
     const { addToast } = useToasts();
 
-    useEffect(() => {
-        const fetchProductData = async () => {
-            await listProductAction(token, dispatch);
-        }
-        fetchProductData();
-    }, [])
-
-
-    const onAddAvailableInventory = async (data) => {
-        const body = {
-            name: data.name,
-            description: data.description,
-            productId: data.product,
-            quantity: data.quantity,
-            uomId: "7150C4DA-6057-EC11-A355-AC12030DA196",
-            agentId: "6645E25B-0E51-EC11-A355-AC12030DA196",
-        }
-        try {
-            await createAvailableInventoryAction(body, token, dispatch);
-        } catch {
-            console.log("In Catch");
-        }
-    }
 
     return (
         <>
             <div className="main-content d-flex flex-column">
                 <div className="breadcrumb-area">
-                    <h1>Future Inventory</h1>
+                    <h1>Available Inventory</h1>
                 </div>
 
-                <form >
+                <div className="table-responsive">
+                    <table className="table">
+                        <thead>
+                            <tr>
+
+                                <th>Name</th>
+                                <th>Product</th>
+                                <th>Quantity</th>
+                                <th>Agent</th>
 
 
-                    <div className="row">
-                        <div className="col-lg-6 col-md-6">
-                            <div className="form-group">
-                                <label>
-                                    <i className='bx bx-camera-land'></i>{" "}
-                                    Name:
-                                </label>
-                                <input {...register('name', { required: true })}
-                                    type="text"
-                                    className="form-control"
-                                    placeholder="Name of the product"
-                                />
-                                {errors["name"] && <span className="errorMessage">Please enter the name</span>}
-                            </div>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+
+                            <td className="details">
+                                <span>
+                                    Potato
+                                </span>
+                            </td>
+                            <td className="details">
+                                <span>
+                                    Potato
+                                </span>
+                            </td>
+                            <td className="details">
+                                <span>
+                                    200 Kgs
+                                </span>
+                            </td>
+                            <td className="details">
+                                <span>
+                                    Sandeep
+                                </span>
+                            </td>
 
 
 
-                        </div>
-
-                        <div className="col-lg-6 col-md-6">
-                            <div className="form-group">
-                                <label>
-                                    Product:
-                                </label>
-                                <select {...register('product', { required: true })}
-                                    className="dashbaord-category-select"
-
-                                >
-                                    <option disabled>Select Product</option>
-
-                                    {state.product.data && state.product.data?.map((product) => (
-                                    <option value={product.id}>{product.name}</option>
-                                ))}
-
-                                </select>
-                                {errors["product"] && <span className="errorMessage">Please select product </span>}
-                            </div>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-lg-12 col-md-12">
-                            <div className="form-group">
-                                <label>
-                                    <i className='bx bx-futureinventory' ></i>{" "}
-                                    Description:
-                                </label>
-                                <textarea
-                                    {...register('description', { required: true })}
-                                    cols="30"
-                                    rows="7"
-                                    className="form-control"
-                                    placeholder="Product Description"
-
-                                ></textarea>
-                                {errors["description"] && <span className="errorMessage">Please enter the description</span>}
-                            </div>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-lg-6 col-md-6">
-                            <div className="form-group">
-                                <label>
-                                    <i className='bx bx-camera-inventory'></i>{" "}
-                                    Quantity:
-                                </label>
-                                <input {...register('quantity', { required: true })}
-                                    type="text"
-                                    className="form-control"
-                                    placeholder="Quantity"
-                                />
-                                {errors["quantity"] && <span className="errorMessage">Please enter the quantity</span>}
-                            </div>
-                        </div>
-
-                        <div className="col-lg-6 col-md-6">
-                            <div className="form-group">
-                                <label>
-                                    Unit Of Measurement:
-                                </label>
-                                <select {...register('unitOfMeasurement', { required: true })}
-                                    className="dashbaord-category-select"
-
-                                >
-                                    <option disabled>Select Measurement</option>
-
-                                    <option>Kgs</option>
-                                    <option>Ton</option>
-
-
-                                </select>
-                                {errors["unitOfMeasurement"] && <span className="errorMessage">Please select measurement </span>}
-                            </div>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-lg-6 col-md-6">
-                            <div className="form-group">
-                                <label>
-                                    Agent:
-                                </label>
-                                <select {...register('agent', { required: true })}
-                                    className="dashbaord-category-select"
-
-                                >
-                                    <option disabled>Select Agent</option>
-
-                                    <option>Murali</option>
-                                    <option>Krishna</option>
-
-
-                                </select>
-                                {errors["agent"] && <span className="errorMessage">Please select agent </span>}
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div className="add-listings-btn">
-                        <button type="submit" onClick={handleSubmit(onAddAvailableInventory)}>Add Available Inventory</button>
-                    </div>
-                    <div className="flex-grow-1"></div>
-                </form>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </>
     );

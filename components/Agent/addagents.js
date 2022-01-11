@@ -1,27 +1,29 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import { useForm } from 'react-hook-form';
 
 import { Modal, Button } from 'react-bootstrap';
 
-import { createNotificationAction } from '../../actions/notificationactions';
+import { parseCookies } from "nookies";
 
 import { useAppContext } from "../../contexts/appcontext";
 
-
 import LoadingSpinner from '../Shared/LoadingSpinner';
+
+import { createAgentAction } from '../../actions/agentaction';
+
+import { getAgentsAction } from "../../actions/agentaction";
+
+
 
 
 const AddAgent = (props) => {
 
+    const { token } = parseCookies();
+
     const { register, handleSubmit, reset, getValues } = useForm();
 
     const { state, dispatch } = useAppContext();
-
-
-    const createUser = async (phone, name) => {
-        
-    }
 
     const addAgentData = async (data) => {
 
@@ -34,6 +36,7 @@ const AddAgent = (props) => {
                 ModifiedAt: new Date(),
 
             }
+            await createAgentAction(body, token, dispatch);
 
             handleClose();
         }
@@ -42,6 +45,7 @@ const AddAgent = (props) => {
         }
 
     }
+
     const handleClose = () => {
 
         reset({
@@ -70,15 +74,14 @@ const AddAgent = (props) => {
                             <div className="form-group">
                                 <label>
                                     <i className="bx bx-briefcase-alt"></i>{" "}
-                                    Agent Name:
+                                    Agent Title:
                                 </label>
                                 <input {...register('agentName', { required: true })}
                                     type="text"
                                     className="form-control"
-                                    placeholder="Provide Agent Name"
+                                    placeholder="Enter Agent Name"
                                 />
                             </div>
-
                             <div className="form-group">
                                 <label>
                                     <i className="bx bx-briefcase-alt"></i>{" "}
@@ -90,11 +93,15 @@ const AddAgent = (props) => {
                                     placeholder="Provide Phone Number"
                                 />
                             </div>
+
+
+
                         </div>
                     </Modal.Body>
                     <Modal.Footer>
                         <Button onClick={handleSubmit(addAgentData)}>Add Agent</Button>
                         <Button onClick={handleClose}>Close</Button>
+
                     </Modal.Footer>
                 </form>
             </Modal>

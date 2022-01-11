@@ -9,12 +9,15 @@ import { createProductCategoryAction } from "../../actions/productactions";
 
 import { useToasts } from "react-toast-notifications";
 
+import { Modal, Button } from 'react-bootstrap';
+import LoadingSpinner from '../Shared/LoadingSpinner';
 
-const ProductCategory = () => {
+
+const AddProductCategory = (props) => {
 
     const [genreSelection, setGenreSelection] = useState([]);
 
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors } , reset} = useForm();
 
     const { state, dispatch } = useAppContext();
 
@@ -30,22 +33,35 @@ const ProductCategory = () => {
         }
         try {
             await createProductCategoryAction(body, token, dispatch);
+            handleClose();
         } catch {
-            console.log("In Catch");
         }
     }
 
+    const handleClose = () => {
+
+        reset({
+            productName: "", productDescription: ""
+        });
+        props.onHide();
+    }
+
+
     return (
         <>
-            <div className="main-content d-flex flex-column">
-                <div className="breadcrumb-area">
-                    <h1>Product Category</h1>
-                </div>
-
-                <form >
-
-
-                    <div className="row">
+             <Modal
+                {...props}
+                size="md"
+                aria-labelledby="contained-modal-title-vcenter"
+                centered
+            >
+                <form onSubmit={e => e.preventDefault()}>
+                    <Modal.Header closeButton>
+                        <Modal.Title id="contained-modal-title-vcenter">
+                            Add Product
+                        </Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
                         <div className="col-lg-12 col-md-12">
                             <div className="form-group">
                                 <label>
@@ -76,15 +92,26 @@ const ProductCategory = () => {
                                 {errors["productDescription"] && <span className="errorMessage">Please enter the product category description</span>}
                             </div>
                         </div>
-                    </div>
-                    <div className="add-listings-btn">
-                        <button type="submit" onClick={handleSubmit(onAddProductCategory)}>Add Product Category</button>
-                    </div>
-                    <div className="flex-grow-1"></div>
+                 
+                        </Modal.Body>
+                    <Modal.Footer>
+                        <Button onClick={handleSubmit(onAddProductCategory)}>Add product</Button>
+                        <Button onClick={handleClose}>Close</Button>
+
+                    </Modal.Footer>
                 </form>
-            </div>
+            </Modal>
+            <Modal
+                className="loadingmodal"
+                show={state.product.loading}
+                backdrop="static"
+                keyboard={false}
+                centered
+            >
+                <LoadingSpinner />
+            </Modal>            
         </>
     );
 }
 
-export default ProductCategory;
+export default AddProductCategory;

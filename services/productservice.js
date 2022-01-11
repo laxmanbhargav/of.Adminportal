@@ -17,7 +17,6 @@ export async function createProductCategoryService(data, token) {
             .then(data => { return data });
     }
     catch (err) {
-        console.log(err);
         throw err;
     }
 }
@@ -39,7 +38,6 @@ export async function createProductService(data, token) {
             .then(data => { return data });
     }
     catch (err) {
-        console.log(err);
         throw err;
     }
 }

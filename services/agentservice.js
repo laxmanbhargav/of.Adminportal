@@ -1,4 +1,4 @@
-
+import axios from "axios";
 
 export async function createAgentService(data) {
     const url = `${process.env.AGENT_API_URL}/api/agent`;
@@ -13,11 +13,31 @@ export async function createAgentService(data) {
     try {
         return fetch(url, options)
             .then(response => response.json())
-            .then(data => { return data });
+            .then(data => {
+                return data });
     }
     catch (err) {
-        console.log(err);
         throw err;
+    }
+}
+
+export async function getAgentService(token) {
+
+    const url = `${process.env.NEXT_PUBLIC_AGENT_API_URL}/api/Agent`;
+    const options = {
+        method: 'GET',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json;charset=UTF-8',
+            'Authorization': `Bearer ${token}`
+        },
+    };
+    try {
+        const response = await axios.get(url, options).catch((err) => { throw err });
+        return response.data;
+    }
+    catch (err) {
+        return [];
     }
 }
 

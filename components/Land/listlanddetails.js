@@ -4,15 +4,15 @@ import { Button, Modal } from "react-bootstrap";
 
 import { parseCookies } from "nookies";
 
-import AddAgent from './addagents';
+import AddLand from './addlanddetails';
 
 import { useAppContext } from "../../contexts/appcontext";
 
-import { getAgentsAction } from "../../actions/agentaction";
+import { getLandAction } from "../../actions/landactions";
 
 import LoadingSpinner from "../Shared/LoadingSpinner";
 
-const ListAgents = () => {
+const ListLand = () => {
 
     const { token } = parseCookies();
 
@@ -24,12 +24,14 @@ const ListAgents = () => {
 
     useEffect(() => {
 
-            const getAgents = async () => {
-                await getAgentsAction(token, dispatch)
-            }
-            getAgents();
-        
+        const getLands = async () => {
+            await getLandAction(token, dispatch);
+        }
+        getLands();
     }, [])
+
+
+
 
     return (
         <>
@@ -40,59 +42,56 @@ const ListAgents = () => {
                             <p>
                                 We found{" "}
                                 <span className="count">
-                                    {state.agents.data && state.agents.data.length}
+                                    {state.land.data && state.land.data.length}
                                 </span>{" "}
-                                Agents on search criteria
+                                lands 
                             </p>
                         </div>
                     </div>
                     <div className="bookings-listings-box">
                         <Button className="m-3" variant="secondary" onClick={() => setAddModalShow(true)}>
-                            + Add a New Agent
+                            + Add Land Details
                         </Button>
 
-                        <AddAgent
+                        <AddLand
                             show={addModalShow}
                             onHide={() => { setAddModalShow(false) }}
                         />
 
 
+
+
+
                                 <div className="table-responsive">
                                     <table className="table">
                                         <thead>
-                                            <tr>
+                                            <tr >
+                                                <th>Agent</th>
+                                                <th>Farmer Name</th>
+                                                <th>Size In Acres</th>
 
-                                                <th>Name</th>
-                                                <th>Phone</th>
-                                                <th>Action</th>
                                             </tr>
                                         </thead>
 
                                         <tbody>
-                                            {state.agents.data && state.agents?.data?.map((agent) => (
+                                            {state.land.data && state.land.data.map((land) => (
 
-                                                <tr key={agent.id}>
+                                                <tr key={land.id}>
 
                                                     <td className="details">
                                                         <span>
-                                                            {agent.name}
+                                                            {land.agentId}
                                                         </span>
                                                     </td>
                                                     <td className="details">
                                                         <span>
-                                                            {agent.phone}
+                                                            {land.farmerName}
                                                         </span>
                                                     </td>
-
-
-                                                    <td className="action">
-                                                        <a
-                                                            href="#"
-                                                            className="default-btn danger"
-                                                        >
-                                                            <i className="bx bx-x-circle"></i>{" "}
-                                                            Delete
-                                                        </a>
+                                                    <td className="details">
+                                                        <span>
+                                                            {land.sizeInAcres}
+                                                        </span>
                                                     </td>
                                                 </tr>
                                             ))}
@@ -100,7 +99,7 @@ const ListAgents = () => {
                                         </tbody>
                                     </table>
                                 </div>
-                            
+
                     </div>
 
                     <div className="flex-grow-1"></div>
@@ -108,7 +107,7 @@ const ListAgents = () => {
             </section>
             <Modal
                 className="loadingmodal"
-                  show={state.agents.loading}
+                  show={state.land.loading}
                 backdrop="static"
                 keyboard={false}
                 centered
@@ -120,4 +119,4 @@ const ListAgents = () => {
     );
 };
 
-export default ListAgents;
+export default ListLand;

@@ -34,7 +34,7 @@ const Dashboard = () => {
 							<div className="icon-box">
 								<i className="bx bx-map-alt"></i>
 							</div>
-							<span className="sub-title">Land</span>
+							<span className="sub-title">Agent</span>
 							<h3>10</h3>
 						</div>
 					</div>

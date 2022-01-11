@@ -4,15 +4,15 @@ import { Button, Modal } from "react-bootstrap";
 
 import { parseCookies } from "nookies";
 
-import AddAgent from './addagents';
+import AddProductCategory from './addproductcategory';
 
 import { useAppContext } from "../../contexts/appcontext";
 
-import { getAgentsAction } from "../../actions/agentaction";
+import { listProductAction, listProductCategoryAction } from "../../actions/productactions";
 
 import LoadingSpinner from "../Shared/LoadingSpinner";
 
-const ListAgents = () => {
+const ListProductCategory = () => {
 
     const { token } = parseCookies();
 
@@ -24,10 +24,10 @@ const ListAgents = () => {
 
     useEffect(() => {
 
-            const getAgents = async () => {
-                await getAgentsAction(token, dispatch)
+            const getProductCategory = async () => {
+                await listProductCategoryAction(token, dispatch)
             }
-            getAgents();
+            getProductCategory();
         
     }, [])
 
@@ -40,18 +40,18 @@ const ListAgents = () => {
                             <p>
                                 We found{" "}
                                 <span className="count">
-                                    {state.agents.data && state.agents.data.length}
+                                    {state.productcategory.data && state.productcategory.data.length}
                                 </span>{" "}
-                                Agents on search criteria
+                                Product Category
                             </p>
                         </div>
                     </div>
                     <div className="bookings-listings-box">
                         <Button className="m-3" variant="secondary" onClick={() => setAddModalShow(true)}>
-                            + Add a New Agent
+                            + Add a New Product Category
                         </Button>
 
-                        <AddAgent
+                        <AddProductCategory
                             show={addModalShow}
                             onHide={() => { setAddModalShow(false) }}
                         />
@@ -63,36 +63,25 @@ const ListAgents = () => {
                                             <tr>
 
                                                 <th>Name</th>
-                                                <th>Phone</th>
-                                                <th>Action</th>
+                                                <th>Description</th>
+
                                             </tr>
                                         </thead>
 
                                         <tbody>
-                                            {state.agents.data && state.agents?.data?.map((agent) => (
+                                            {state.productcategory.data && state.productcategory.data.map((product) => (
 
-                                                <tr key={agent.id}>
+                                                <tr key={product.id}>
 
                                                     <td className="details">
                                                         <span>
-                                                            {agent.name}
+                                                            {product.name}
                                                         </span>
                                                     </td>
                                                     <td className="details">
                                                         <span>
-                                                            {agent.phone}
+                                                            {product.description}
                                                         </span>
-                                                    </td>
-
-
-                                                    <td className="action">
-                                                        <a
-                                                            href="#"
-                                                            className="default-btn danger"
-                                                        >
-                                                            <i className="bx bx-x-circle"></i>{" "}
-                                                            Delete
-                                                        </a>
                                                     </td>
                                                 </tr>
                                             ))}
@@ -108,7 +97,7 @@ const ListAgents = () => {
             </section>
             <Modal
                 className="loadingmodal"
-                  show={state.agents.loading}
+                  show={state.productcategory.loading}
                 backdrop="static"
                 keyboard={false}
                 centered
@@ -120,4 +109,4 @@ const ListAgents = () => {
     );
 };
 
-export default ListAgents;
+export default ListProductCategory;

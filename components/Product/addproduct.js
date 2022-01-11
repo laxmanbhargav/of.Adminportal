@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { parseCookies } from "nookies";
 import { useForm } from 'react-hook-form';
 
-
+import { Modal, Button } from 'react-bootstrap';
 import { useAppContext } from '../../contexts/appcontext';
 
 import { createProductAction } from "../../actions/productactions";
@@ -10,13 +10,14 @@ import { createProductAction } from "../../actions/productactions";
 import { useToasts } from "react-toast-notifications";
 
 import { listProductCategoryAction } from '../../actions/productactions';
+import LoadingSpinner from '../Shared/LoadingSpinner';
 
 
-const ProductCategory = () => {
+const Product = (props) => {
 
     const [genreSelection, setGenreSelection] = useState([]);
 
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
     const { state, dispatch } = useAppContext();
 
@@ -25,15 +26,15 @@ const ProductCategory = () => {
     const { addToast } = useToasts();
 
     useEffect(() => {
-        const fetchProductCategoryData = async () => {
+        const fetchProductData = async () => {
             await listProductCategoryAction(token, dispatch);
         }
-        fetchProductCategoryData();
+        fetchProductData();
     }, [])
 
 
 
-    const onAddProductCategory = async (data) => {
+    const onAddProduct = async (data) => {
         const body = {
             name: data.productName,
             productCategoryId: data.productCategory,
@@ -41,19 +42,36 @@ const ProductCategory = () => {
         }
         try {
             await createProductAction(body, token, dispatch);
+            handleClose();
         } catch {
-            console.log("In Catch");
         }
     }
 
+    const handleClose = () => {
+
+        reset({
+            productName: "", productCategory: ""
+        });
+        props.onHide();
+    }
+
+
     return (
         <>
-            <div className="main-content d-flex flex-column">
-                <div className="breadcrumb-area">
-                    <h1>Product</h1>
-                </div>
-                <form >
-                    <div className="row">
+             <Modal
+                {...props}
+                size="md"
+                aria-labelledby="contained-modal-title-vcenter"
+                centered
+            >
+                <form onSubmit={e => e.preventDefault()}>
+                    <Modal.Header closeButton>
+                        <Modal.Title id="contained-modal-title-vcenter">
+                            Add Product
+                        </Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        
                         <div className="col-lg-6 col-md-6">
                             <div className="form-group">
                                 <label>
@@ -90,8 +108,8 @@ const ProductCategory = () => {
                                 {errors["productCategory"] && <span className="errorMessage">Please select product category </span>}
                             </div>
                         </div>
-                    </div>
-                    <div className="row">
+
+
                         <div className="col-lg-12 col-md-12">
                             <div className="form-group">
                                 <label>
@@ -106,19 +124,29 @@ const ProductCategory = () => {
                                     placeholder="Product Description"
 
                                 ></textarea>
-                                {errors["productDescription"] && <span className="errorMessage">Please enter the product category description</span>}
+                                {errors["productDescription"] && <span className="errorMessage">Please enter the product description</span>}
                             </div>
                         </div>
-                    </div>
-                    <div className="add-listings-btn">
-                        <button type="submit" onClick={handleSubmit(onAddProductCategory)}>Add Product Category</button>
-                    </div>
-                    <div className="flex-grow-1"></div>
-                </form>
+                        </Modal.Body>
+                    <Modal.Footer>
+                        <Button onClick={handleSubmit(onAddProduct)}>Add product</Button>
+                        <Button onClick={handleClose}>Close</Button>
 
-            </div>
+                    </Modal.Footer>
+                </form>
+            </Modal>
+            <Modal
+                className="loadingmodal"
+                show={state.product.loading}
+                backdrop="static"
+                keyboard={false}
+                centered
+            >
+                <LoadingSpinner />
+            </Modal>                
+
         </>
     );
 }
 
-export default ProductCategory;
+export default Product;

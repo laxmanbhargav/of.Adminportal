@@ -1,10 +1,10 @@
 import Navbar from "../../components/_App/Navbar";
 import Footer from "../../components/_App/Footer";
-import Crop from '../../components/Crop/crop';
+import Crop from '../../components/Crop/addcrop';
 import AuthorizedContent from '../../components/Shared/authorizedcontent';
 import { Tab, Nav, Row, Col, Card } from 'react-bootstrap';
 
-const AddCrop= () => {
+const Crops= () => {
     return (
         <AuthorizedContent>
 
@@ -55,4 +55,4 @@ const AddCrop= () => {
     );
 };
 
-export default AddCrop;
+export default Crops;

@@ -10,13 +10,16 @@ import { createCropAction } from "../../actions/cropactions";
 import { useToasts } from "react-toast-notifications";
 
 import { listProductAction } from '../../actions/productactions';
+import { getAgentsAction } from "../../actions/agentaction";
+import { getCropsAction } from "../../actions/cropactions";
+import { createFutureInventoryAction } from "../../actions/inventoryactions";
 
 
-const Crop = () => {
+const AddCrop = () => {
 
     const [genreSelection, setGenreSelection] = useState([]);
 
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
     const { state, dispatch } = useAppContext();
 
@@ -32,9 +35,18 @@ const Crop = () => {
     }, [])
 
 
+    useEffect(() => {
+        const fetchAgentData = async () => {
+            await getAgentsAction(token, dispatch);
+        }
+        fetchAgentData();
+    }, [])
+
+
     const onAddCrop = async (data) => {
+        const InvBody = null;
         const body = {
-            agentId: "6645E25B-0E51-EC11-A355-AC12030DA196",
+            agentId: data.agent,
             productId: data.product,
             cropStartDate: data.cropStartDate,
             cropEndDate: data.cropEndDate,
@@ -42,9 +54,12 @@ const Crop = () => {
             uomId: "7150C4DA-6057-EC11-A355-AC12030DA196"
         }
         try {
+            
             await createCropAction(body, token, dispatch);
+            handleClose();
+            
+            
         } catch {
-            console.log("In Catch");
         }
     }
 
@@ -76,6 +91,25 @@ const Crop = () => {
 
                                 </select>
                                 {errors["product"] && <span className="errorMessage">Please select product </span>}
+                            </div>
+                        </div>
+                        <div className="col-lg-6 col-md-6">
+                            <div className="form-group">
+                                <label>
+                                    Agent:
+                                </label>
+                                <select {...register('agent', { required: true })}
+                                    className="dashbaord-category-select"
+
+                                >
+                                    <option disabled>Select Agent</option>
+
+                                    {state.agents.data && state.agents.data?.map((agent) => (
+                                        <option value={agent.id}>{agent.name}</option>
+                                    ))}
+
+                                </select>
+                                {errors["agent"] && <span className="errorMessage">Please select agent </span>}
                             </div>
                         </div>
                     </div>
@@ -156,4 +190,4 @@ const Crop = () => {
     );
 }
 
-export default Crop;
+export default AddCrop;

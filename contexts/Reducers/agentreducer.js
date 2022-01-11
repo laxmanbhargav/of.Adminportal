@@ -7,8 +7,7 @@ const AgentReducer = (state, action) => {
         case CONSTANTS.ADD_AGENT_LOADING:
             return {
                 ...state,
-                loading: true,
-                agentdata: payload.data
+                loading: true
             };
         case CONSTANTS.ADD_AGENT_SUCCESS:
             return {
@@ -22,7 +21,23 @@ const AgentReducer = (state, action) => {
                 loading: false,
                 error: payload.error,
             };
-
+        case CONSTANTS.LIST_AGENT_LOADING:
+            return {
+                ...state,
+                loading: true,
+            };
+        case CONSTANTS.LIST_AGENT_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                data: payload.data,
+            };
+        case CONSTANTS.LIST_AGENT_FAILED:
+            return {
+                ...state,
+                loading: false,
+                error: payload.error,
+            };
 
         default: return {
             ...state
