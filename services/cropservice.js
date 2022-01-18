@@ -21,7 +21,7 @@ export async function createCropService(data, token) {
     }
 }
 
-export async function getCropService(token) {
+export async function listCropService(token) {
     const url = `${process.env.NEXT_PUBLIC_CROP_API_URL}/api/Crop`;
     const options = {
         method: 'GET',
@@ -30,15 +30,13 @@ export async function getCropService(token) {
             'Content-Type': 'application/json;charset=UTF-8',
             'Authorization': `Bearer ${token}`
         },
-        body: JSON.stringify(data)
     };
     try {
-        return fetch(url, options)
-            .then(response => response.json())
-            .then(data => { return data });
+        const response = await axios.get(url, options).catch((err) => { throw err });
+        return response.data;
     }
     catch (err) {
-        throw err;
+        return [];
     }
 }
 

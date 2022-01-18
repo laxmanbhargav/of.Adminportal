@@ -173,12 +173,26 @@ const Navbar = () => {
 										</ul>
 									</li>
 									<li className="nav-item">
-										<Link href="/crop" 
-											activeClassName="active">
-											<a className="dropdown-toggle nav-link">
-												Crop
-											</a>
-										</Link>
+										<a
+											href="#"
+											className=" nav-link user-drop"
+										>
+											Crop
+										</a>
+										<ul className="dropdown-menu">
+											<li className="nav-item">
+												<Link
+													href="/crop/addcrop"
+													activeClassName="active"
+												>
+													<a className="nav-link">
+														Add Crop
+													</a>
+												</Link>
+											</li>
+											
+
+										</ul>
 									</li>
 
 

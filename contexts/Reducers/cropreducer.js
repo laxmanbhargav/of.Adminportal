@@ -21,7 +21,24 @@ const CropReducer = (state, action) => {
                 loading: false,
                 error: payload.error,
             };
-    
+        case CONSTANTS.LIST_CROP_LOADING:
+            return {
+                ...state,
+                loading: true,
+            };
+        case CONSTANTS.LIST_CROP_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                cropData: payload.data,
+            };
+        case CONSTANTS.LIST_CROP_FAILED:
+            return {
+                ...state,
+                loading: false,
+                error: payload.error,
+            };
+
 
         default: return {
             ...state

@@ -45,5 +45,5 @@ export const initialCropState = {
     loading: false,
     error: null,
     data: null,
-    searchData: null,
+    cropData: null,
 }
