@@ -1,38 +1,38 @@
 import React from 'react';
 import * as CONSTANTS from './contextconstants';
 
-const ProductReducer = (state, action) => {
+const CropReducer = (state, action) => {
     const payload = action.payload
     switch (action.type) {
-        case CONSTANTS.ADD_PRODUCT_LOADING:
+        case CONSTANTS.ADD_CROP_LOADING:
             return {
                 ...state,
                 loading: true,
             };
-        case CONSTANTS.ADD_PRODUCT_SUCCESS:
+        case CONSTANTS.ADD_CROP_SUCCESS:
             return {
                 ...state,
                 loading: false,
                 data: payload.data,
             };
-        case CONSTANTS.ADD_PRODUCT_FAILED:
+        case CONSTANTS.ADD_CROP_FAILED:
             return {
                 ...state,
                 loading: false,
                 error: payload.error,
             };
-        case CONSTANTS.LIST_PRODUCT_LOADING:
+        case CONSTANTS.LIST_CROP_LOADING:
             return {
                 ...state,
                 loading: true,
             };
-        case CONSTANTS.LIST_PRODUCT_SUCCESS:
+        case CONSTANTS.LIST_CROP_SUCCESS:
             return {
                 ...state,
                 loading: false,
-                data: payload.data,
+                cropData: payload.data,
             };
-        case CONSTANTS.LIST_PRODUCT_FAILED:
+        case CONSTANTS.LIST_CROP_FAILED:
             return {
                 ...state,
                 loading: false,
@@ -46,4 +46,4 @@ const ProductReducer = (state, action) => {
     }
 };
 
-export default ProductReducer;
+export default CropReducer;

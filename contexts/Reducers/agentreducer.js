@@ -1,44 +1,43 @@
 import React from 'react';
 import * as CONSTANTS from './contextconstants';
 
-const ProductReducer = (state, action) => {
+const AgentReducer = (state, action) => {
     const payload = action.payload
     switch (action.type) {
-        case CONSTANTS.ADD_PRODUCT_LOADING:
+        case CONSTANTS.ADD_AGENT_LOADING:
             return {
                 ...state,
-                loading: true,
+                loading: true
             };
-        case CONSTANTS.ADD_PRODUCT_SUCCESS:
-            return {
-                ...state,
-                loading: false,
-                data: payload.data,
-            };
-        case CONSTANTS.ADD_PRODUCT_FAILED:
-            return {
-                ...state,
-                loading: false,
-                error: payload.error,
-            };
-        case CONSTANTS.LIST_PRODUCT_LOADING:
-            return {
-                ...state,
-                loading: true,
-            };
-        case CONSTANTS.LIST_PRODUCT_SUCCESS:
+        case CONSTANTS.ADD_AGENT_SUCCESS:
             return {
                 ...state,
                 loading: false,
                 data: payload.data,
             };
-        case CONSTANTS.LIST_PRODUCT_FAILED:
+        case CONSTANTS.ADD_AGENT_FAILED:
             return {
                 ...state,
                 loading: false,
                 error: payload.error,
             };
-
+        case CONSTANTS.LIST_AGENT_LOADING:
+            return {
+                ...state,
+                loading: true,
+            };
+        case CONSTANTS.LIST_AGENT_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                data: payload.data,
+            };
+        case CONSTANTS.LIST_AGENT_FAILED:
+            return {
+                ...state,
+                loading: false,
+                error: payload.error,
+            };
 
         default: return {
             ...state
@@ -46,4 +45,4 @@ const ProductReducer = (state, action) => {
     }
 };
 
-export default ProductReducer;
+export default AgentReducer;

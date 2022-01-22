@@ -4,6 +4,10 @@ import FutureInventory from '../../components/Inventory/futureinventory';
 import AuthorizedContent from '../../components/Shared/authorizedcontent';
 import { Tab, Nav, Row, Col, Card } from 'react-bootstrap';
 
+
+
+
+
 const AddFutureInventory= () => {
     return (
         <AuthorizedContent>

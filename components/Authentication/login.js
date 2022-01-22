@@ -52,7 +52,7 @@ const AuthModal = () => {
             <section className="contact-area pb-100">
                 <div className="container">
                     <div className="section-title">
-                        <img src="/images/oeloginlogo.png" />
+                        <img src="/images/taazalogo.png" />
 
                     </div>
 

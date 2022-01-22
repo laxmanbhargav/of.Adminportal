@@ -2,7 +2,7 @@ export const initialLandState = {
     loading: false,
     error: null,
     data: null,
-    searchData: null,
+    addData: null,
 }
 
 
@@ -11,6 +11,13 @@ export const initialProductCategoryState = {
     error: null,
     data: null,
     searchData: null,
+}
+
+export const initialAgentState = {
+    loading: false,
+    error: null,
+    data: null,
+    agentdata: null
 }
 
 export const initialProductState = {
@@ -32,4 +39,11 @@ export const initialAvailableInventoryState = {
     error: null,
     data: null,
     searchData: null,
+}
+
+export const initialCropState = {
+    loading: false,
+    error: null,
+    data: null,
+    cropData: null,
 }

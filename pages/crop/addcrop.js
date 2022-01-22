@@ -2,19 +2,19 @@ import React from 'react';
 import Navbar from "../../components/_App/Navbar";
 import Footer from "../../components/_App/Footer";
 import AuthorizedContent from '../../components/Shared/authorizedcontent';
-import ProductCategory from '../../components/Product/listproductcategory';
+import ListCrop from '../../components/Crop/listcrop';
 
 
-const ProductCategories = () => {
+const AddCrop = () => {
     //search
     return (
         <AuthorizedContent>
             <Navbar />
-                <ProductCategory />
+                <ListCrop />
             <Footer />
         </AuthorizedContent>
     );
 
 };
 
-export default ProductCategories;
+export default AddCrop;
