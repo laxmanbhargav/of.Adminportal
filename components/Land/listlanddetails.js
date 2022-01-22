@@ -35,7 +35,7 @@ const ListLand = () => {
 
     return (
         <>
-            <section className="listings-area ptb-20 bg-f9f9f9">
+            <section className="listings-area ptb-20 bg-f9f9f9 bgBackground">
                 <div className="container bg-f9f9f9">
                     <div className="listings-grid-sorting row align-items-center">
                         <div className="col-lg-5 col-md-6 result-count">

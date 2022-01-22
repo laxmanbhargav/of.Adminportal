@@ -22,8 +22,8 @@ export default function AuthorizedContent(props) {
     return (
         <>
             {authState
-             ? <AppContextProvider>{children}</AppContextProvider> 
-             : <Loader loading={true} />}
+                ? <AppContextProvider>{children}</AppContextProvider>
+                : <Loader loading={true} />}
         </>
     )
 }

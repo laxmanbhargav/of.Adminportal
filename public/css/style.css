@@ -643,6 +643,14 @@ Navbar Area CSS
   font-size: 18px;
 }
 
+.bgBackground {
+
+  background-image: url(../images/bgbackground.png);
+ 
+
+  
+}
+
 .miran-nav .navbar .navbar-search-box .input-search {
   border: none;
   border-bottom: 1px solid #e0e0e0;
