@@ -237,7 +237,6 @@ const Navbar = () => {
 											className="auth-one"
 											onClick={() => Logout()}
 										>
-											<i className="flaticon-user"></i>{" "}
 											Logout
 										</span>
 

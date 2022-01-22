@@ -10,17 +10,11 @@ const AddAvailableInventory= () => {
 
             <Navbar />
             <div className="main-content d-flex flex-column">
-                <div className="breadcrumb-area">
-                    <h1>Howdy, Admin!</h1>
-                </div>
 
                 <Tab.Container id="left-tabs-example" defaultActiveKey="first">
                     <Row>
-                    <Col sm={3}>
-                            
-                        </Col>
                         
-                        <Col sm={9}>
+                        <Col>
                             <Card>
                                 <Card.Body>
                                     <Tab.Content>
@@ -35,10 +29,6 @@ const AddAvailableInventory= () => {
                     </Row>
                 </Tab.Container>
 
-
-
-                <div className="flex-grow-1"></div>
-
                 <div className="copyrights-area">
                     <div className="row align-items-center">
                         <div className="col-lg-6 col-sm-6 col-md-6">
@@ -50,7 +40,6 @@ const AddAvailableInventory= () => {
                     </div>
                 </div>
             </div>
-            <Footer />
         </AuthorizedContent>
     );
 };

@@ -8,40 +8,30 @@ import { Tab, Nav, Row, Col, Card } from 'react-bootstrap';
 
 
 
-const AddFutureInventory= () => {
+const AddFutureInventory = () => {
     return (
         <AuthorizedContent>
 
             <Navbar />
             <div className="main-content d-flex flex-column">
-                <div className="breadcrumb-area">
-                    <h1>Howdy, Admin!</h1>
-                </div>
 
                 <Tab.Container id="left-tabs-example" defaultActiveKey="first">
                     <Row>
-                    <Col sm={3}>
-                            
-                        </Col>
-                        
-                        <Col sm={9}>
+
+                        <Col>
                             <Card>
                                 <Card.Body>
                                     <Tab.Content>
                                         <Tab.Pane eventKey="first">
                                             <FutureInventory />
                                         </Tab.Pane>
-                                        
+
                                     </Tab.Content>
                                 </Card.Body>
                             </Card>
                         </Col>
                     </Row>
                 </Tab.Container>
-
-
-
-                <div className="flex-grow-1"></div>
 
                 <div className="copyrights-area">
                     <div className="row align-items-center">
@@ -54,7 +44,6 @@ const AddFutureInventory= () => {
                     </div>
                 </div>
             </div>
-            <Footer />
         </AuthorizedContent>
     );
 };

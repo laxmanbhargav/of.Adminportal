@@ -99,8 +99,8 @@ const Product = (props) => {
                                 >
                                     <option disabled>Select Product Category</option>
 
-                                    {state.productcategory.data && state.productcategory.data?.map((productcategory) => (
-                                    <option value={productcategory.id}>{productcategory.name}</option>
+                                    {state.productcategory.data && state.productcategory.data?.map((productcategory, index) => (
+                                    <option key={index} value={productcategory.id}>{productcategory.name}</option>
                                 ))}
 
 

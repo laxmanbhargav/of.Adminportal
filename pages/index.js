@@ -22,7 +22,7 @@ const Dashboard = () => {
 		<AuthorizedContent>
 			<Navbar />
 
-			<div className="main-content d-flex flex-column bgBackground">
+			<div className="main-content d-flex flex-column bgBackground min-vh-100">
 
 
 				<h4 className="mb-4">Welcome Admin!</h4>
@@ -86,7 +86,6 @@ const Dashboard = () => {
 
 			</div>
 
-			<Footer />
 		</AuthorizedContent>
 	);
 };

@@ -11,7 +11,6 @@ const AddLand = () => {
         <AuthorizedContent>
             <Navbar />
                 <ListLand />
-            <Footer />
         </AuthorizedContent>
     );
 

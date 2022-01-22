@@ -33,8 +33,8 @@ const ListAgents = () => {
 
     return (
         <>
-            <section className="listings-area ptb-20 bg-f9f9f9 bgBackground">
-                <div className="container bg-f9f9f9">
+            <section className="listings-area ptb-20 bg-f9f9f9 bgBackground min-vh-100">
+                <div className="container bg-f9f9f9 pb-1">
                     <div className="listings-grid-sorting row align-items-center">
                         <div className="col-lg-5 col-md-6 result-count">
                             <p>

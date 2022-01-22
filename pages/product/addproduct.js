@@ -12,7 +12,6 @@ const Products = () => {
         <AuthorizedContent>
             <Navbar />
                 <Product />
-            <Footer />
         </AuthorizedContent>
     );
 

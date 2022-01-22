@@ -11,7 +11,6 @@ const AddCrop = () => {
         <AuthorizedContent>
             <Navbar />
                 <ListCrop />
-            <Footer />
         </AuthorizedContent>
     );
 

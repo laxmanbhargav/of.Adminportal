@@ -644,11 +644,14 @@ Navbar Area CSS
 }
 
 .bgBackground {
-
   background-image: url(../images/bgbackground.png);
- 
+   /* Full height */
+   height: 100%; 
 
-  
+   /* Center and scale the image nicely */
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
 }
 
 .miran-nav .navbar .navbar-search-box .input-search {
@@ -2785,8 +2788,6 @@ Features Area CSS
   position: absolute;
   height: 100px;
   pointer-events: none;
-  -webkit-mask-image: url("data:image/svg+xml;utf8,%3csvg viewBox='0 0 100 100' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'%3e%3cpath d='M0,0 C16.6666667,66 33.3333333,98 50,98 C66.6666667,98 83.3333333,66 100,0 L100,100 L0,100 L0,0 Z' fill='%23fff'/%3e%3c/svg%3e");
-  mask-image: url("data:image/svg+xml;utf8,%3csvg viewBox='0 0 100 100' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'%3e%3cpath d='M0,0 C16.6666667,66 33.3333333,98 50,98 C66.6666667,98 83.3333333,66 100,0 L100,100 L0,100 L0,0 Z' fill='%23fff'/%3e%3c/svg%3e");
   -webkit-mask-size: 100% 101%;
   mask-size: 100% 101%;
   background: #f9f9f9;
@@ -3472,8 +3473,6 @@ Listings Area CSS
   position: absolute;
   height: 100px;
   pointer-events: none;
-  -webkit-mask-image: url("data:image/svg+xml;utf8,%3csvg viewBox='0 0 100 100' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'%3e%3cpath d='M0,0 C16.6666667,66 33.3333333,98 50,98 C66.6666667,98 83.3333333,66 100,0 L100,100 L0,100 L0,0 Z' fill='%23fff'/%3e%3c/svg%3e");
-  mask-image: url("data:image/svg+xml;utf8,%3csvg viewBox='0 0 100 100' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'%3e%3cpath d='M0,0 C16.6666667,66 33.3333333,98 50,98 C66.6666667,98 83.3333333,66 100,0 L100,100 L0,100 L0,0 Z' fill='%23fff'/%3e%3c/svg%3e");
   -webkit-mask-size: 100% 101%;
   mask-size: 100% 101%;
   background: #f9f9f9;

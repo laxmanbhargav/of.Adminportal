@@ -11,7 +11,6 @@ const Agents = () => {
         <AuthorizedContent>
             <Navbar />
                 <ListAgents />
-            <Footer />
         </AuthorizedContent>
     );
 

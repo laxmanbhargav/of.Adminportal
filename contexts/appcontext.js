@@ -24,6 +24,9 @@ const AppContextProvider = ({ children }) => {
     });
     const [state, dispatch] = useReducer(appReducer, initialAppState);
 
+    useEffect(() => {
+        console.log(state);
+    })
     return (
         <AppContext.Provider
             value={{ state, dispatch }}

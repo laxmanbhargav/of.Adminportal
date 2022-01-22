@@ -135,8 +135,8 @@ const AddLandDetails = (props) => {
                                     >
                                         <option disabled>Select Agent</option>
 
-                                        {state.agents.data && state.agents.data?.map((agent) => (
-                                            <option value={agent.id}>{agent.name}</option>
+                                        {state.agents.data && state.agents.data?.map((agent, index) => (
+                                            <option key={index} value={agent.id}>{agent.name}</option>
                                         ))}
                                     </select>
                                     {errors["agent"] && <span className="errorMessage">Please select agent </span>}

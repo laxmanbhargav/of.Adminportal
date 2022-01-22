@@ -108,8 +108,8 @@ const AddCrop = (props) => {
                                     >
                                         <option disabled>Select Product</option>
 
-                                        {state.product.data && state.product.data?.map((product) => (
-                                            <option value={product.id}>{product.name}</option>
+                                        {state.product.data && state.product.data?.map((product, index) => (
+                                            <option key={index} value={product.id}>{product.name}</option>
                                         ))}
 
                                     </select>
@@ -127,8 +127,8 @@ const AddCrop = (props) => {
                                     >
                                         <option disabled>Select Agent</option>
 
-                                        {state.agents.data && state.agents.data?.map((agent) => (
-                                            <option value={agent.id}>{agent.name}</option>
+                                        {state.agents.data && state.agents.data?.map((agent, index) => (
+                                            <option key={index} value={agent.id}>{agent.name}</option>
                                         ))}
 
                                     </select>
