@@ -70,7 +70,7 @@ const AddCrop = (props) => {
     const handleClose = () => {
 
         reset({
-            product: "", agent: "", cropStartDate: "", cropYieldDate: "", estimatedYield: "", unitOfMeasurement: "", 
+            product: "", agent: "", cropStartDate: "", cropYieldDate: "", estimatedYield: "", unitOfMeasurement: "",
         });
         props.onHide();
     }
@@ -90,7 +90,7 @@ const AddCrop = (props) => {
 
                     <Modal.Header closeButton>
                         <Modal.Title id="contained-modal-title-vcenter">
-                            Add Agent
+                            Add Harvest
                         </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
@@ -116,6 +116,8 @@ const AddCrop = (props) => {
                                     {errors["product"] && <span className="errorMessage">Please select product </span>}
                                 </div>
                             </div>
+
+
                             <div className="col-lg-6 col-md-6">
                                 <div className="form-group">
                                     <label>
@@ -133,6 +135,38 @@ const AddCrop = (props) => {
 
                                     </select>
                                     {errors["agent"] && <span className="errorMessage">Please select agent </span>}
+                                </div>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-lg-12 col-md-12">
+                                <div className="form-group">
+                                    <label>
+                                        <i className='bx bx-camera-land'></i>{" "}
+                                        Product Name:
+                                    </label>
+                                    <input {...register('productName', { required: true })}
+                                        type="text"
+                                        className="form-control"
+                                        placeholder="Name of the product"
+                                    />
+                                    {errors["productName"] && <span className="errorMessage">Please enter the product name</span>}
+                                </div>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-lg-12 col-md-12">
+                                <div className="form-group">
+                                    <label>
+                                        <i className='bx bx-camera-land'></i>{" "}
+                                        Product Description:
+                                    </label>
+                                    <input {...register('productDescription', { required: true })}
+                                        type="text"
+                                        className="form-control"
+                                        placeholder="Description of the product"
+                                    />
+                                    {errors["productDescription"] && <span className="errorMessage">Please enter the product description</span>}
                                 </div>
                             </div>
                         </div>
@@ -157,14 +191,14 @@ const AddCrop = (props) => {
                                 <div className="form-group">
                                     <label>
                                         <i className='bx bxs-calendar' ></i>{" "}
-                                        Crop Yield Date:
+                                        Crop End Date:
                                     </label>
-                                    <input {...register('cropYieldDate', { required: true })}
+                                    <input {...register('cropEndDate', { required: true })}
                                         type="date"
                                         className="form-control"
 
                                     />
-                                    {errors["cropYieldDate"] && <span className="errorMessage">Please enter the crop yield date</span>}
+                                    {errors["cropEndDate"] && <span className="errorMessage">Please enter the crop end date</span>}
 
                                 </div>
                             </div>
@@ -174,14 +208,14 @@ const AddCrop = (props) => {
                                 <div className="form-group">
                                     <label>
                                         <i className='bx bx-camera-land'></i>{" "}
-                                        Estimated Yield:
+                                        Future Quantity:
                                     </label>
-                                    <input {...register('estimatedYield', { required: true })}
+                                    <input {...register('futureQuantity', { required: true })}
                                         type="text"
                                         className="form-control"
-                                        placeholder="Estimated Yield"
+                                        placeholder="Future Quantity"
                                     />
-                                    {errors["estimatedYield"] && <span className="errorMessage">Please enter the estimated crop yield</span>}
+                                    {errors["futureQuantity"] && <span className="errorMessage">Please enter the future quantity</span>}
                                 </div>
                             </div>
                             <div className="col-lg-6 col-md-6">
@@ -201,6 +235,42 @@ const AddCrop = (props) => {
                                 </div>
                             </div>
                         </div>
+                        <div className="row">
+
+                            <div className="col-lg-6 col-md-6">
+                                <div className="form-group">
+                                    <label>
+                                        <i className='bx bx-camera-land'></i>{" "}
+                                        Reason:
+                                    </label>
+                                    <input {...register('reason', { required: true })}
+                                        type="text"
+                                        className="form-control"
+                                        placeholder="Reason"
+                                    />
+                                    {errors["reason"] && <span className="errorMessage">Please enter the reason for change</span>}
+                                </div>
+
+                            </div>
+
+                            <div className="col-lg-6 col-md-6">
+                                <div className="form-group">
+                                    <label>
+                                        <i className='bx bx-camera-land'></i>{" "}
+                                        Yield Status:
+                                    </label>
+                                    <input {...register('yieldStatus', { required: true })}
+                                        type="text"
+                                        className="form-control"
+                                        placeholder="Yield Status"
+                                    />
+                                    {errors["yieldStatus"] && <span className="errorMessage">Please enter Yield Status</span>}
+                                </div>
+
+                            </div>
+
+                        </div>
+
                     </Modal.Body>
                     <Modal.Footer>
                         <div className="add-listings-btn">

@@ -47,3 +47,17 @@ export const initialCropState = {
     data: null,
     cropData: null,
 }
+
+export const initialDcState = {
+    loading: false,
+    error: null,
+    data: null,
+    addData: null,
+}
+
+export const initialDcInventoryState = {
+    loading: false,
+    error: null,
+    data: null,
+    addData: null,
+}

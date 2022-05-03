@@ -7,7 +7,10 @@ import ProductReducer from './Reducers/productreducer';
 import FutureInventoryReducer from './Reducers/futureinventoryreducer';
 import AvailableInventoryReducer from './Reducers/availableinventoryreducer';
 import CropReducer from './Reducers/cropreducer';
-import { initialLandState, initialProductCategoryState, initialProductState, initialFutureInventoryState, initialAvailableInventoryState, initialAgentState, initialCropState } from './state/appstate';
+import DcReducer from './Reducers/dcreducer';
+import DcInventoryReducer from './Reducers/dcinventoryreducer';
+import { initialLandState, initialProductCategoryState, initialProductState, initialFutureInventoryState, 
+    initialAvailableInventoryState, initialAgentState, initialCropState, initialDcState, initialDcInventoryState } from './state/appstate';
 
 const AppContext = createContext();
 
@@ -20,7 +23,9 @@ const AppContextProvider = ({ children }) => {
         product: [ProductReducer, initialProductState],
         futureinventory: [FutureInventoryReducer, initialFutureInventoryState],
         availableinventory: [AvailableInventoryReducer, initialAvailableInventoryState],
-        crop: [CropReducer, initialCropState]
+        crop: [CropReducer, initialCropState],
+        dc: [DcReducer, initialDcState],
+        dcinventory: [DcInventoryReducer, initialDcInventoryState]
     });
     const [state, dispatch] = useReducer(appReducer, initialAppState);
 

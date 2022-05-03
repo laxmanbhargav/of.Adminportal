@@ -228,6 +228,40 @@ const Navbar = () => {
 										</ul>
 									</li>
 
+									<li className="nav-item">
+										<a
+											href="#"
+											className=" nav-link user-drop"
+										>
+											Distribution Center
+										</a>
+										<ul className="dropdown-menu">
+											<li className="nav-item">
+												<Link
+													href="/dc/adddc"
+													activeClassName="active"
+												>
+													<a className="nav-link">
+														Add Distribution Center 
+													</a>
+												</Link>
+											</li>
+
+											<li className="nav-item">
+												<Link
+													href="/dc/listdcinventory"
+													activeClassName="active"
+												>
+													<a className="nav-link">
+														List DC Inventory
+													</a>
+												</Link>
+											</li>
+											
+
+										</ul>
+									</li>
+
 								</ul>
 
 								<div className="others-option d-flex align-items-center">
